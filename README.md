@@ -1,2 +1,10 @@
 # nBaseball
-Number Baseball Game by golang
+
+### Number Baseball Game written in Go
+
+## What?
+
+## Why?
+
+## How?
+
