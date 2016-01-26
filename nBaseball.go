@@ -7,7 +7,7 @@ import (
 	"math/rand"
 	"fmt"
 	"flag"
-	_"time"
+	"time"
 )
 
 var arrComputerNumbers []int
@@ -34,16 +34,18 @@ func main() {
 	//fmt.Println(flag.Args())
 	//fmt.Println(*iNumberMaxLength)
 
-	/*
+
 	rand.Seed(int64(time.Now().Nanosecond()))
+	for i:=0; i< 10; i++{
+		fmt.Println(rand.Intn(10))
+	}
+
+
+	/*
 	for i:=0; i< 5; i++{
 		fmt.Println(rand.Intn(10))
 	}
 	*/
-
-	for i:=0; i< 5; i++{
-		fmt.Println(rand.Intn(10))
-	}
 
 	makeNumbers(*iNumberMaxLength)
 
