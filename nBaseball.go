@@ -30,7 +30,6 @@ func makeNumbers(iLength int) bool{
 				randomNumber = rand.Intn(10)
 			}
 		}
-
 		arrComputerNumbers = append(arrComputerNumbers, randomNumber)
 		return makeNumbers(iLength-1)
 	}
@@ -44,20 +43,11 @@ func main() {
 
 	flag.Args()
 
-	//fmt.Println(flag.Args())
-	//fmt.Println(*iNumberMaxLength)
-
-
 	/*
-	rand.Seed(int64(time.Now().Nanosecond()))
-	for i:=0; i< 10; i++{
-		fmt.Println(rand.Intn(10))
-	}
-	*/
-
 	if (makeNumbers(*iNumberMaxLength)){
 
 	}
+	*/
 
 	fmt.Println(arrComputerNumbers)
 }
