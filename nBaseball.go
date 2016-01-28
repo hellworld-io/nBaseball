@@ -13,16 +13,29 @@ import (
 var arrComputerNumbers []int
 var iNumberMaxLength = flag.Int("maxL", 3, "")
 
-func makeNumbers(iLength int) int{
-	randomNumber := rand.New(rand.NewSource(10))
+/*
+	Option
+		1. First number never use 0
+		2. All number never use 0
+		3. 0 to 9 numbers use
+ */
+func makeNumbers(iLength int) bool{
+	rand.Seed(int64(time.Now().Nanosecond()))
 
 	if(iLength != 0) {
-		arrComputerNumbers = append(arrComputerNumbers, randomNumber.Intn(10))
+		randomNumber := rand.Intn(10)
+		//First number never use 0 (It is option)
+		if(len(arrComputerNumbers) == 0){
+			for(randomNumber == 0){
+				randomNumber = rand.Intn(10)
+			}
+		}
+
+		arrComputerNumbers = append(arrComputerNumbers, randomNumber)
 		return makeNumbers(iLength-1)
-	}else{
-		return 0
 	}
 
+	return true
 
 }
 
@@ -35,19 +48,16 @@ func main() {
 	//fmt.Println(*iNumberMaxLength)
 
 
+	/*
 	rand.Seed(int64(time.Now().Nanosecond()))
 	for i:=0; i< 10; i++{
 		fmt.Println(rand.Intn(10))
 	}
-
-
-	/*
-	for i:=0; i< 5; i++{
-		fmt.Println(rand.Intn(10))
-	}
 	*/
 
-	makeNumbers(*iNumberMaxLength)
+	if (makeNumbers(*iNumberMaxLength)){
+
+	}
 
 	fmt.Println(arrComputerNumbers)
 }
