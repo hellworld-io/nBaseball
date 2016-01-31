@@ -24,7 +24,7 @@ var strCreateNumberOption = flag.String("lOpt", "1", "Option \n 1. Only first nu
 			1. Only first number never use 0
 			2. All number never use 0
 			3. 0 to 9 numbers use
-		desc	: to make random number
+	Desc	: to make random number
  */
 func makeNumbers(iLength int, strOption string) bool{
 	rand.Seed(int64(time.Now().Nanosecond()))
@@ -57,7 +57,9 @@ func makeNumbers(iLength int, strOption string) bool{
 }
 
 /*
-
+	Function	: compareNumbers
+	Arguments	: nothing
+	Desc		: to comapare all number of arrComputerNumbers and to change duplication number
  */
 func compareNumbers() bool{
 	bCheck := true
