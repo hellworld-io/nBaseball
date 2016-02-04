@@ -46,8 +46,8 @@ func main() {
 	//	fmt.Fprintln(os.Stderr, "reading standard input:", err)
 	//}
 
-
-	if (numbers.MakeRandomNumbersbyComputer(*iNumberMaxLength, *strCreateNumberOption, arrComputerNumbers)){
+	arrComputerNumbers = numbers.MakeRandomNumbersbyComputer(*iNumberMaxLength, *strCreateNumberOption)
+	if (arrComputerNumbers != nil){
 
 	}else{
 		log.Fatal("Making number is fail.")

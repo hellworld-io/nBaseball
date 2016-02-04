@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+var arrNumbers []int
 /*
 	1. Function		: MakeRandomNumbersbyComputer
 	2. Arguments
@@ -15,14 +16,13 @@ import (
 			3. 0 to 9 numbers use
 	3. Desc			: to make random number
  */
-func MakeRandomNumbersbyComputer(iLength int, strOption string, arrRandomComNumber []int) bool{
+func MakeRandomNumbersbyComputer(iLength int, strOption string) []int{
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
-	bResult := false
 
 	if(iLength != 0) {
 		if(strOption == "1"){
-			if(len(arrRandomComNumber) == 0){
+			if(len(arrNumbers) == 0){
 				for(randomNumber == 0){
 					randomNumber = rand.Intn(10)
 				}
@@ -33,17 +33,15 @@ func MakeRandomNumbersbyComputer(iLength int, strOption string, arrRandomComNumb
 
 		}
 
-		arrRandomComNumber = append(arrRandomComNumber, randomNumber)
-		return MakeRandomNumbersbyComputer(iLength-1,strOption,arrRandomComNumber)
+		arrNumbers = append(arrNumbers, randomNumber)
+		return MakeRandomNumbersbyComputer(iLength-1,strOption)
 	}
 
-	if (compareNumbers(arrRandomComNumber)){
-		bResult = true
-	}else{
-		bResult = false
+	if (!compareNumbers(arrNumbers)){
+		return nil
 	}
 
-	return bResult
+	return arrNumbers
 }
 
 /*
@@ -51,25 +49,25 @@ func MakeRandomNumbersbyComputer(iLength int, strOption string, arrRandomComNumb
 	2. Arguments	: arrRandomComNumber	= random number array by Computer
 	3. Desc			: to comapare all number of arrComputerNumbers and to change duplication number
  */
-func compareNumbers(arrRandomComNumber []int) bool{
+func compareNumbers(arrNumbers []int) bool{
 	bCheck := true
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
-	for i:=0; i <len(arrRandomComNumber); i++ {
-		for j:=i+1; j <len(arrRandomComNumber); j++{
-			if(arrRandomComNumber[i] == arrRandomComNumber[j]){
-				for(arrRandomComNumber[i] == randomNumber || (i == 0 && randomNumber == 0)){
+	for i:=0; i <len(arrNumbers); i++ {
+		for j:=i+1; j <len(arrNumbers); j++{
+			if(arrNumbers[i] == arrNumbers[j]){
+				for(arrNumbers[i] == randomNumber || (i == 0 && randomNumber == 0)){
 					randomNumber = rand.Intn(10)
 				}
 
-				arrRandomComNumber[i] = randomNumber
+				arrNumbers[i] = randomNumber
 				bCheck = false
 			}
 		}
 	}
 
 	if(!bCheck){
-		compareNumbers(arrRandomComNumber)
+		compareNumbers(arrNumbers)
 	}
 	return true
 }
