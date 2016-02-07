@@ -8,7 +8,7 @@ import (
 	"flag"
 	"log"
 	"os"
-	_"bufio"
+	"bufio"
 	"nBaseball/util"
 	"nBaseball/numbers"
 )
@@ -33,17 +33,24 @@ func main() {
 
 	arrComputerNumbers = numbers.MakeRandomNumbersbyComputer(*iNumberMaxLength, *strCreateNumberOption)
 	if (arrComputerNumbers != nil){
-		//scanner := bufio.NewScanner(os.Stdin)
-		//for scanner.Scan() {
-		//	line := scanner.Text()
-		//	if line == "exit" {
-		//		os.Exit(0)
-		//	}
-		//	fmt.Println(line) // Println will add back the final '\n'
-		//}
-		//if err := scanner.Err(); err != nil {
-		//	fmt.Fprintln(os.Stderr, "reading standard input:", err)
-		//}
+		scanner := bufio.NewScanner(os.Stdin)
+		fmt.Print("Computer is ready. \n If you want to exit, you will input exit. \n Are you ready? (Y/N)")
+		for scanner.Scan() {
+			line := scanner.Text()
+
+			if line == "N" {
+				fmt.Print("Ok! See you.")
+				os.Exit(0)
+			}
+
+			if line == "exit" {
+				os.Exit(0)
+			}
+			//fmt.Println(line) // Println will add back the final '\n'
+		}
+		if err := scanner.Err(); err != nil {
+			fmt.Fprintln(os.Stderr, "reading standard input:", err)
+		}
 	}else{
 		log.Fatal("Making number is fail.")
 		os.Exit(-1)
