@@ -34,7 +34,7 @@ func main() {
 	arrComputerNumbers = numbers.MakeRandomNumbersbyComputer(*iNumberMaxLength, *strCreateNumberOption)
 	if (arrComputerNumbers != nil){
 		scanner := bufio.NewScanner(os.Stdin)
-		fmt.Print("Computer is ready. \n If you want to exit, you will input exit. \n Are you ready? (Y/N)")
+		fmt.Print("Computer is ready. \nIf you want to exit, you will input exit. \nWhen you start, I will recode time. \nAre you ready? (Y/N)")
 		for scanner.Scan() {
 			line := scanner.Text()
 
