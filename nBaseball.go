@@ -70,16 +70,6 @@ func main() {
 		log.Fatal("Making number is fail.")
 		os.Exit(-1)
 	}
-
-
-	//endSecond := time.Now()
-	//endSecond.Format("00:04:12")
-	//fmt.Println(endSecond)
-	//fmt.Println(startSecond)
-	//totalSecond := endSecond.Sub(startSecond)
-	//
-	//fmt.Println(time.Duration(totalSecond.Seconds()))
-	//
-	//fmt.Println("totalSecond" , totalSecond.Minutes(),int64(totalSecond.Seconds()))
+	
 	fmt.Println(arrComputerNumbers)
 }
