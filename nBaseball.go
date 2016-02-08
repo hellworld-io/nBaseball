@@ -70,6 +70,6 @@ func main() {
 		log.Fatal("Making number is fail.")
 		os.Exit(-1)
 	}
-	
+
 	fmt.Println(arrComputerNumbers)
 }
