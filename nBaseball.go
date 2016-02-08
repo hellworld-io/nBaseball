@@ -11,6 +11,7 @@ import (
 	"bufio"
 	"nBaseball/util"
 	"nBaseball/numbers"
+	"time"
 )
 
 var arrComputerNumbers []int
@@ -32,7 +33,9 @@ func main() {
 	}
 
 	arrComputerNumbers = numbers.MakeRandomNumbersbyComputer(*iNumberMaxLength, *strCreateNumberOption)
+
 	if (arrComputerNumbers != nil){
+		startSecond := time.Now()
 		scanner := bufio.NewScanner(os.Stdin)
 		fmt.Print("Computer is ready. \nIf you want to exit, you will input exit. \nWhen you start, I will recode time. \nAre you ready? (Y/N)")
 		for scanner.Scan() {
@@ -46,6 +49,18 @@ func main() {
 			if line == "exit" {
 				os.Exit(0)
 			}
+
+			if line == "check"{
+				endSecond := time.Now()
+
+				timeDiff := endSecond.Sub(startSecond)
+
+				totalMin := int(timeDiff.Minutes())% 60
+				totalSec := int(timeDiff.Seconds())% 60
+				fmt.Printf("Time Diff == %d:%d \n",totalMin,totalSec)
+
+			}
+
 			//fmt.Println(line) // Println will add back the final '\n'
 		}
 		if err := scanner.Err(); err != nil {
@@ -57,5 +72,14 @@ func main() {
 	}
 
 
+	//endSecond := time.Now()
+	//endSecond.Format("00:04:12")
+	//fmt.Println(endSecond)
+	//fmt.Println(startSecond)
+	//totalSecond := endSecond.Sub(startSecond)
+	//
+	//fmt.Println(time.Duration(totalSecond.Seconds()))
+	//
+	//fmt.Println("totalSecond" , totalSecond.Minutes(),int64(totalSecond.Seconds()))
 	fmt.Println(arrComputerNumbers)
 }
