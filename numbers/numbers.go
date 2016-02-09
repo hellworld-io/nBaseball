@@ -16,7 +16,7 @@ var arrNumbers []int
 			3. 0 to 9 numbers use
 	3. Desc			: to make random number
  */
-func MakeRandomNumbersbyComputer(iLength int, strOption string) []int{
+func MakeRandomNumbersByComputer(iLength int, strOption string) []int{
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
 
@@ -28,13 +28,13 @@ func MakeRandomNumbersbyComputer(iLength int, strOption string) []int{
 				}
 			}
 		}else if(strOption == "2"){
-
-		}else{
-
+			for(randomNumber == 0){
+				randomNumber = rand.Intn(10)
+			}
 		}
 
 		arrNumbers = append(arrNumbers, randomNumber)
-		return MakeRandomNumbersbyComputer(iLength-1,strOption)
+		return MakeRandomNumbersByComputer(iLength-1,strOption)
 	}
 
 	if (!compareNumbers(arrNumbers)){
@@ -70,4 +70,9 @@ func compareNumbers(arrNumbers []int) bool{
 		compareNumbers(arrNumbers)
 	}
 	return true
+}
+
+func CheckUserNumber(iUserInputNumber int, arrRandomNumbers []int) string{
+
+	return ""
 }
