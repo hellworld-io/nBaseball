@@ -11,3 +11,11 @@ func CheckArgNumberLength(iNumberLength int) bool{
 	}
 	return true
 }
+
+func CheckUserNumberLength(strUserNumberLength string, iMaxNumberLength int) bool{
+	if len(strUserNumberLength) != iMaxNumberLength {
+		return false
+	}
+
+	return true
+}
