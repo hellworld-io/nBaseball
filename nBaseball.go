@@ -15,7 +15,7 @@ import (
 	"strconv"
 )
 
-var arrComputerNumbers []int
+var arrComputerNumbers = []int{1,2,3}
 var iNumberMaxLength = flag.Int("maxL", 3, "must create 3 to 5 number length")
 var strCreateNumberOption = flag.String("lOpt", "1", "Option \n 1. First number does no use 0 only. \n 2. All number do not use 0. \n 3. 0 to 9 numbers use")
 var strResult string
@@ -34,7 +34,8 @@ func main() {
 		os.Exit(-1)
 	}
 
-	arrComputerNumbers = numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
+	//[TODO] for test temporary comment
+	//arrComputerNumbers = numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
 
 	if (arrComputerNumbers != nil){
 		startSecond := time.Now()
@@ -47,19 +48,25 @@ func main() {
 				os.Exit(0)
 			}
 
-			iLine, err := strconv.Atoi(line);
-			if err != nil {
+			if _, err := strconv.Atoi(line); err != nil {
 				fmt.Printf("%q does not looks like a number.\n", line)
 			}else{
+				//[TODO] if user input number of duplication must check
 				if (!util.CheckUserNumberLength(line, *iNumberMaxLength)){
 					fmt.Printf("Max number length is %d\n",*iNumberMaxLength)
 				}else{
-					strResult = numbers.CheckUserNumber(iLine, arrComputerNumbers)
+					//for i, r := range line {
+					//	c := string(r)
+					//	fmt.Println(c)
+					//	fmt.Println(i)
+					//}
+
+					strResult = numbers.CompareUserNumbersAndRandomNumbers(line, arrComputerNumbers)
 
 					if(strResult == "Out"){
 
 					}else{
-						fmt.Printf("%q result is %q\n", iLine, strResult)
+						fmt.Printf("%q result is %q\n", line, strResult)
 					}
 				}
 			}
