@@ -3,6 +3,8 @@ package numbers
 import (
 	"math/rand"
 	"time"
+	"strconv"
+	_"fmt"
 )
 
 var arrNumbers []int
@@ -72,7 +74,26 @@ func compareNumbers(arrNumbers []int) bool{
 	return true
 }
 
-func CheckUserNumber(iUserInputNumber int, arrRandomNumbers []int) string{
 
-	return ""
+func CompareUserNumbersAndRandomNumbers(strUserInputNumbers string, arrRandomNumbers []int) string{
+	var strResul string = ""
+	var iStrik int = 0
+	var iBall int = 0
+
+	for idx, randomNumber := range arrRandomNumbers {
+		for jdx, strUserInputNumber := range strUserInputNumbers {
+			if (strconv.Itoa(randomNumber) == string(strUserInputNumber)){
+				if (idx == jdx){
+					iStrik++
+				}else{
+					iBall++
+				}
+			}
+
+		}
+	}
+
+	strResul = strconv.Itoa(iStrik) + "Strikes " + strconv.Itoa(iBall) + "Balls"
+
+	return strResul
 }
