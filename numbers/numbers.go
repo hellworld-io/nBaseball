@@ -39,7 +39,7 @@ func MakeRandomNumbersByComputer(iLength int, strOption string) []int{
 		return MakeRandomNumbersByComputer(iLength-1,strOption)
 	}
 
-	if (!compareNumbers(arrNumbers)){
+	if (!compareRandomNumbersAndResetNumbers(arrNumbers)){
 		return nil
 	}
 
@@ -47,11 +47,11 @@ func MakeRandomNumbersByComputer(iLength int, strOption string) []int{
 }
 
 /*
-	1. Function		: compareNumbers
+	1. Function		: compareRandomNumbersAndResetNumbers
 	2. Arguments	: arrRandomComNumber	= random number array by Computer
 	3. Desc			: to comapare all number of arrComputerNumbers and to change duplication number
  */
-func compareNumbers(arrNumbers []int) bool{
+func compareRandomNumbersAndResetNumbers(arrNumbers []int) bool{
 	bCheck := true
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
@@ -69,7 +69,7 @@ func compareNumbers(arrNumbers []int) bool{
 	}
 
 	if(!bCheck){
-		compareNumbers(arrNumbers)
+		compareRandomNumbersAndResetNumbers(arrNumbers)
 	}
 	return true
 }
@@ -92,8 +92,11 @@ func CompareUserNumbersAndRandomNumbers(strUserInputNumbers string, arrRandomNum
 
 		}
 	}
-
-	strResul = strconv.Itoa(iStrik) + "Strikes " + strconv.Itoa(iBall) + "Balls"
+	if(iStrik == 3){
+		strResul = "Out"
+	}else{
+		strResul = strconv.Itoa(iStrik) + "Strikes " + strconv.Itoa(iBall) + "Balls"
+	}
 
 	return strResul
 }
