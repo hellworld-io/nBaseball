@@ -51,35 +51,31 @@ func main() {
 			if _, err := strconv.Atoi(line); err != nil {
 				fmt.Printf("%q does not looks like a number.\n", line)
 			}else{
-				//[TODO] if user input number of duplication must check
 				if (!util.CheckUserNumberLength(line, *iNumberMaxLength)){
 					fmt.Printf("Max number length is %d\n",*iNumberMaxLength)
 				}else{
-					//for i, r := range line {
-					//	c := string(r)
-					//	fmt.Println(c)
-					//	fmt.Println(i)
-					//}
+					if(util.CheckUserInputNumber(line)){
+						strResult = numbers.CompareUserNumbersAndRandomNumbers(line, arrComputerNumbers)
 
-					strResult = numbers.CompareUserNumbersAndRandomNumbers(line, arrComputerNumbers)
+						if(strResult == "Out"){
+							endSecond := time.Now()
 
-					if(strResult == "Out"){
+							timeDiff := endSecond.Sub(startSecond)
 
+							hours0 := int(timeDiff.Hours())
+							days := hours0 / 24
+							hours := hours0 % 24
+							totalMin := int(timeDiff.Minutes())% 60
+							totalSec := int(timeDiff.Seconds())% 60
+							fmt.Printf("Your result is %d days + %d hours + %d minutes + %d seconds\n", days, hours, totalMin, totalSec)
+							//os.Exit(-1)
+						}else{
+							fmt.Printf("%q result is %q\n", line, strResult)
+						}
 					}else{
-						fmt.Printf("%q result is %q\n", line, strResult)
+						fmt.Println("Do not use duplication number")
 					}
 				}
-			}
-
-			if line == "check"{
-				endSecond := time.Now()
-
-				timeDiff := endSecond.Sub(startSecond)
-
-				totalMin := int(timeDiff.Minutes())% 60
-				totalSec := int(timeDiff.Seconds())% 60
-				fmt.Printf("Time Diff == %d:%d \n",totalMin,totalSec)
-
 			}
 		}
 
