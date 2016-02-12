@@ -7,7 +7,7 @@ import (
 	_"fmt"
 )
 
-var arrNumbers []int
+var ArrRandomNumbers []int
 /*
 	1. Function		: MakeRandomNumbersbyComputer
 	2. Arguments
@@ -18,13 +18,13 @@ var arrNumbers []int
 			3. 0 to 9 numbers use
 	3. Desc			: to make random number
  */
-func MakeRandomNumbersByComputer(iLength int, strOption string) []int{
+func MakeRandomNumbersByComputer(iLength int, strOption string){
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
 
 	if(iLength != 0) {
 		if(strOption == "1"){
-			if(len(arrNumbers) == 0){
+			if(len(ArrRandomNumbers) == 0){
 				for(randomNumber == 0){
 					randomNumber = rand.Intn(10)
 				}
@@ -35,15 +35,13 @@ func MakeRandomNumbersByComputer(iLength int, strOption string) []int{
 			}
 		}
 
-		arrNumbers = append(arrNumbers, randomNumber)
+		ArrRandomNumbers = append(ArrRandomNumbers, randomNumber)
 		return MakeRandomNumbersByComputer(iLength-1,strOption)
 	}
 
-	if (!compareRandomNumbersAndResetNumbers(arrNumbers)){
+	if (!compareRandomNumbersAndResetNumbers(ArrRandomNumbers)){
 		return nil
 	}
-
-	return arrNumbers
 }
 
 /*
