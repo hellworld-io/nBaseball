@@ -37,17 +37,14 @@ func main() {
 
 	//[TODO] for test temporary comment
 	//numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
-	//numbers.ArrRandomNumbers
+
 	if (arrComputerNumbers != nil){
 		startSecond := time.Now()
 
-		fmt.Print("Computer is ready. \nIf you want to exit, you will input exit. \nWhen you start, It will be recoded time.\n")
-
 		scanner := bufio.NewScanner(os.Stdin)
-		fmt.Print("Computer is ready. \nIf you want to exit, you will input exit. \nWhen you start, It will be recoded time.\n")
+		fmt.Print("Computer is ready. \nIf you want to exit, you will input exit. \nWhen you started, It will be recoded time.\n")
 
 		for scanner.Scan() {
-
 			line := scanner.Text()
 
 
@@ -75,7 +72,7 @@ func main() {
 								hours := hours0 % 24
 								totalMin := int(timeDiff.Minutes())% 60
 								totalSec := int(timeDiff.Seconds())% 60
-								fmt.Printf("Your result is %d days + %d hours + %d minutes + %d seconds \n", days, hours, totalMin, totalSec)
+								fmt.Printf("Your result is %dD %dH %dM %dS \n", days, hours, totalMin, totalSec)
 								fmt.Println("If you want to see results, press enter.")
 								//os.Exit(-1)
 
@@ -92,7 +89,7 @@ func main() {
 				fmt.Println("Here is currently results.")
 				var strFileName = string( "./data/UserResult.json")
 				util.ReadJsonFile(strFileName)
-				fmt.Println(util.JsonData)
+				fmt.Println(util.JsonData["userResults"][0]["Name"].(string))
 			}
 
 		}
@@ -105,5 +102,5 @@ func main() {
 		os.Exit(-1)
 	}
 
-	fmt.Println(arrComputerNumbers)
+	//fmt.Println(arrComputerNumbers)
 }
