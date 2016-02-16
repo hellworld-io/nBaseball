@@ -13,13 +13,27 @@ import (
 	"time"
 	"strconv"
 	"bufio"
+	"encoding/json"
 )
 
 var arrComputerNumbers = []int{1,2,3}	//Test data
 var iNumberMaxLength = flag.Int("maxL", 3, "must create 3 to 5 number length")
-var strCreateNumberOption = flag.String("lOpt", "1", "Option \n 1. First number does no use 0 only. \n 2. All number do not use 0. \n 3. 0 to 9 numbers use")
+var strCreateNumberOption = flag.String("lOpt", "1", "Option \n 1. All number do not use 0. \n 2. First number does no use 0 only. \n 3. 0 to 9 numbers use")
 var strResult string
-var bClear = bool(true)
+var bClear = bool(false)
+var iTryTotalCount int
+
+func showResults(tStartTime time.Time, tEndTime time.Time){
+	timeDiff := tEndTime.Sub(tStartTime)
+
+	hours0 := int(timeDiff.Hours())
+	days := hours0 / 24
+	hours := hours0 % 24
+	totalMin := int(timeDiff.Minutes())% 60
+	totalSec := int(timeDiff.Seconds())% 60
+	fmt.Printf("Your result is %dD %dH %dM %dS, and you try %d\n", days, hours, totalMin, totalSec, iTryTotalCount)
+	fmt.Println("If you want to see results, press enter.")
+}
 
 func main() {
 	flag.Parse()
@@ -47,12 +61,12 @@ func main() {
 		for scanner.Scan() {
 			line := scanner.Text()
 
-
 			if line == "exit" {
 				os.Exit(0)
 			}
 
-			if(bClear){
+			if(!bClear){
+				iTryTotalCount++
 				if _, err := strconv.Atoi(line); err != nil {
 					fmt.Printf("%q does not looks like a number.\n", line)
 				}else{
@@ -65,18 +79,10 @@ func main() {
 							if(strResult == "Out"){
 								endSecond := time.Now()
 
-								timeDiff := endSecond.Sub(startSecond)
-
-								hours0 := int(timeDiff.Hours())
-								days := hours0 / 24
-								hours := hours0 % 24
-								totalMin := int(timeDiff.Minutes())% 60
-								totalSec := int(timeDiff.Seconds())% 60
-								fmt.Printf("Your result is %dD %dH %dM %dS \n", days, hours, totalMin, totalSec)
-								fmt.Println("If you want to see results, press enter.")
+								showResults(startSecond, endSecond)
 								//os.Exit(-1)
 
-								bClear = false
+								bClear = true
 							}else{
 								fmt.Printf("%q result is %q\n", line, strResult)
 							}
@@ -89,7 +95,28 @@ func main() {
 				fmt.Println("Here is currently results.")
 				var strFileName = string( "./data/UserResult.json")
 				util.ReadJsonFile(strFileName)
-				fmt.Println(util.JsonData["userResults"][0]["Name"].(string))
+				fmt.Println(util.JsonData[0]["Name"].(string))
+				util.JsonData[0]["Name"] = "aaa"
+				fmt.Println(util.JsonData[0]["Name"].(string))
+				fmt.Println(util.JsonData)
+				jsonUserResult, err := json.Marshal(util.JsonData)
+
+				if err != nil {
+					log.Fatal("Making json file error!!! ")
+					os.Exit(-1)
+				}
+
+
+				jsonUpdate, err := os.Create("./data/UserResult.json")
+
+				if err != nil {
+					log.Fatal("Making json file error!!! ")
+					os.Exit(-1)
+				}
+				//defer jsonUpdate.Close()
+
+				jsonUpdate.Write(jsonUserResult)
+				jsonUpdate.Close()
 			}
 
 		}
