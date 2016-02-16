@@ -4,7 +4,6 @@ import (
 	"math/rand"
 	"time"
 	"strconv"
-	_"fmt"
 )
 
 var ArrRandomNumbers []int
@@ -24,14 +23,14 @@ func MakeRandomNumbersByComputer(iLength int, strOption string) bool{
 
 	if(iLength != 0) {
 		if(strOption == "1"){
+			for(randomNumber == 0){
+				randomNumber = rand.Intn(10)
+			}
+		}else if(strOption == "2"){
 			if(len(ArrRandomNumbers) == 0){
 				for(randomNumber == 0){
 					randomNumber = rand.Intn(10)
 				}
-			}
-		}else if(strOption == "2"){
-			for(randomNumber == 0){
-				randomNumber = rand.Intn(10)
 			}
 		}
 
