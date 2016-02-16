@@ -1,10 +1,1 @@
-{
-  "userResults":
-  [
-    { "No": "1", "Name": "Computer 1", "Time":"0D 0H 0M 5S", "Try":"5" },
-    { "No": "2", "Name": "Computer 2", "Time":"0D 0H 0M 10S", "Try":"6" },
-    { "No": "3", "Name": "Computer 3", "Time":"0D 0H 0M 15S", "Try":"7" },
-    { "No": "4", "Name": "Computer 4", "Time":"0D 0H 0M 20S", "Try":"8" },
-    { "No": "5", "Name": "Computer 5", "Time":"0D 0H 0M 25S", "Try":"9" }
-  ]
-}
+[{"Name":"aaa","No":"1","Time":"0D 0H 0M 5S","Try":"5"},{"Name":"Computer 2","No":"2","Time":"0D 0H 0M 10S","Try":"6"},{"Name":"Computer 3","No":"3","Time":"0D 0H 0M 15S","Try":"7"},{"Name":"Computer 4","No":"4","Time":"0D 0H 0M 20S","Try":"8"},{"Name":"Computer 5","No":"5","Time":"0D 0H 0M 25S","Try":"9"}]
