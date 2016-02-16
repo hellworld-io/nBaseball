@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var JsonData map[string][]map[string]interface{}
+var JsonData []map[string]interface{}
 
 func ReadJsonFile(strFileName string) {
 	file, err := ioutil.ReadFile(strFileName)
