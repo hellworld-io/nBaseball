@@ -16,7 +16,7 @@ import (
 	"encoding/json"
 )
 
-var arrComputerNumbers = []int{1,2,3}	//Test data
+//var arrComputerNumbers = []int{1,2,3}	//Test data
 var iNumberMaxLength = flag.Int("maxL", 3, "must create 3 to 5 number length")
 var strCreateNumberOption = flag.String("lOpt", "1", "Option \n 1. All number do not use 0. \n 2. First number does no use 0 only. \n 3. 0 to 9 numbers use")
 var strResult string
@@ -50,9 +50,10 @@ func main() {
 	}
 
 	//[TODO] for test temporary comment
-	//numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
+	numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
+	//arrComputerNumbers
 
-	if (arrComputerNumbers != nil){
+	if (numbers.ArrRandomNumbers != nil){
 		startSecond := time.Now()
 
 		scanner := bufio.NewScanner(os.Stdin)
@@ -74,7 +75,7 @@ func main() {
 						fmt.Printf("Max number length is %d\n",*iNumberMaxLength)
 					}else{
 						if(util.CheckUserInputNumber(line)){
-							strResult = numbers.CompareUserNumbersAndRandomNumbers(line, arrComputerNumbers)
+							strResult = numbers.CompareUserNumbersAndRandomNumbers(line, numbers.ArrRandomNumbers)
 
 							if(strResult == "Out"){
 								endSecond := time.Now()
