@@ -13,7 +13,7 @@ import (
 	"time"
 	"strconv"
 	"bufio"
-	"encoding/json"
+	_"encoding/json"
 )
 
 //var arrComputerNumbers = []int{1,2,3}	//Test data
@@ -32,7 +32,8 @@ func showResults(tStartTime time.Time, tEndTime time.Time){
 	totalMin := int(timeDiff.Minutes())% 60
 	totalSec := int(timeDiff.Seconds())% 60
 	fmt.Printf("Your result is %dD %dH %dM %dS, and you try %d\n", days, hours, totalMin, totalSec, iTryTotalCount)
-	fmt.Println("If you want to see results, press enter.")
+
+	//fmt.Println("If you want to see results, press enter.")
 }
 
 func main() {
@@ -52,6 +53,7 @@ func main() {
 	//[TODO] for test temporary comment
 	numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
 	//arrComputerNumbers
+
 
 	if (numbers.ArrRandomNumbers != nil){
 		startSecond := time.Now()
@@ -92,7 +94,9 @@ func main() {
 						}
 					}
 				}
-			}else{
+			}
+			/*
+			else{
 				fmt.Println("Here is currently results.")
 				var strFileName = string( "./data/UserResult.json")
 				util.ReadJsonFile(strFileName)
@@ -119,7 +123,7 @@ func main() {
 				jsonUpdate.Write(jsonUserResult)
 				jsonUpdate.Close()
 			}
-
+			*/
 		}
 
 		if err := scanner.Err(); err != nil {
