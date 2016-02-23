@@ -16,7 +16,7 @@ import (
 	_"encoding/json"
 )
 
-//var arrComputerNumbers = []int{1,2,3}	//Test data
+var arrComputerNumbers = []int{1,2,3}	//Test data
 var iNumberMaxLength = flag.Int("maxL", 3, "must create 3 to 5 number length")
 var strCreateNumberOption = flag.String("lOpt", "1", "Option \n 1. All number do not use 0. \n 2. First number does no use 0 only. \n 3. 0 to 9 numbers use")
 var strResult string
@@ -36,6 +36,21 @@ func showResults(tStartTime time.Time, tEndTime time.Time){
 	//fmt.Println("If you want to see results, press enter.")
 }
 
+func setResult() (ret []string){
+	ret = append([]string{
+		"                      ┌─────────────┐                           ",
+		"                      │   Result    │                           ",
+		"                      └─────────────┘                           ",
+		"┌────┬────────────────────────┬──────────────────┬─────────────┐",
+		"│ No │          Name          │       Time       │     Try     │",
+		"├────┼────────────────────────┼──────────────────┼─────────────┤"},
+		ret...)
+	return append(ret,
+		"└────┴────────────────────────┴──────────────────┴─────────────┘")
+
+	return
+}
+
 func main() {
 	flag.Parse()
 
@@ -51,11 +66,11 @@ func main() {
 	}
 
 	//[TODO] for test temporary comment
-	numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
+	//numbers.MakeRandomNumbersByComputer(*iNumberMaxLength, *strCreateNumberOption)
 	//arrComputerNumbers
+	//numbers.ArrRandomNumbers
 
-
-	if (numbers.ArrRandomNumbers != nil){
+	if (arrComputerNumbers != nil){
 		startSecond := time.Now()
 
 		scanner := bufio.NewScanner(os.Stdin)
@@ -77,7 +92,7 @@ func main() {
 						fmt.Printf("Max number length is %d\n",*iNumberMaxLength)
 					}else{
 						if(util.CheckUserInputNumber(line)){
-							strResult = numbers.CompareUserNumbersAndRandomNumbers(line, numbers.ArrRandomNumbers)
+							strResult = numbers.CompareUserNumbersAndRandomNumbers(line, arrComputerNumbers)
 
 							if(strResult == "Out"){
 								endSecond := time.Now()
@@ -94,9 +109,13 @@ func main() {
 						}
 					}
 				}
-			}
-			/*
-			else{
+			}else{
+				//fmt.Println(setResult())
+
+				for _, val := range setResult() {
+					fmt.Fprintln(os.Stdout, val)
+				}
+				/*
 				fmt.Println("Here is currently results.")
 				var strFileName = string( "./data/UserResult.json")
 				util.ReadJsonFile(strFileName)
@@ -122,8 +141,8 @@ func main() {
 
 				jsonUpdate.Write(jsonUserResult)
 				jsonUpdate.Close()
+				*/
 			}
-			*/
 		}
 
 		if err := scanner.Err(); err != nil {
