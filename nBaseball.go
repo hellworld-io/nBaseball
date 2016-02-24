@@ -23,6 +23,15 @@ var strResult string
 var bClear = bool(false)
 var iTryTotalCount int
 
+type UserResult struct {
+	UserResults []struct{
+		No string `json:"no"`
+		Name string `json:"name"`
+		Time string `json:"time"`
+		Try string `json:"try"`
+	} `json:"result"`
+}
+
 func showResults(tStartTime time.Time, tEndTime time.Time){
 	timeDiff := tEndTime.Sub(tStartTime)
 
@@ -36,19 +45,22 @@ func showResults(tStartTime time.Time, tEndTime time.Time){
 	//fmt.Println("If you want to see results, press enter.")
 }
 
-func setResult() (ret []string){
-	ret = append([]string{
-		"                      ┌─────────────┐                           ",
-		"                      │   Result    │                           ",
-		"                      └─────────────┘                           ",
+func setResult() (result []string){
+	result = make([]string, 5)
+	for i := range result {
+		result[i] = "│"
+	}
+
+	result = append([]string{
+		"                       ┌────────────┐                           ",
+		"                       │   Result   │                           ",
+		"                       └────────────┘                           ",
 		"┌────┬────────────────────────┬──────────────────┬─────────────┐",
 		"│ No │          Name          │       Time       │     Try     │",
 		"├────┼────────────────────────┼──────────────────┼─────────────┤"},
-		ret...)
-	return append(ret,
+		result...)
+	return append(result,
 		"└────┴────────────────────────┴──────────────────┴─────────────┘")
-
-	return
 }
 
 func main() {
@@ -115,6 +127,12 @@ func main() {
 				for _, val := range setResult() {
 					fmt.Fprintln(os.Stdout, val)
 				}
+
+				//var strFileName = string( "./data/UserResult.json")
+				//util.ReadJsonFile(strFileName)
+				//var uinfo = &util.UserResult{}
+				//fmt.Println(util.UserResult{})
+				//fmt.Println(uinfo)
 				/*
 				fmt.Println("Here is currently results.")
 				var strFileName = string( "./data/UserResult.json")
