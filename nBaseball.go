@@ -23,14 +23,6 @@ var strResult string
 var bClear = bool(false)
 var iTryTotalCount int
 
-type UserResult struct {
-	UserResults []struct{
-		No string `json:"no"`
-		Name string `json:"name"`
-		Time string `json:"time"`
-		Try string `json:"try"`
-	} `json:"result"`
-}
 
 func showResults(tStartTime time.Time, tEndTime time.Time){
 	timeDiff := tEndTime.Sub(tStartTime)
