@@ -21,14 +21,14 @@ func MakeRandomNumbersByComputer(iLength int, strOption string) bool{
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
 
-	if(iLength != 0) {
-		if(strOption == "1"){
-			for(randomNumber == 0){
+	if iLength != 0 {
+		if strOption == "1" {
+			for randomNumber == 0 {
 				randomNumber = rand.Intn(10)
 			}
-		}else if(strOption == "2"){
-			if(len(ArrRandomNumbers) == 0){
-				for(randomNumber == 0){
+		}else if strOption == "2" {
+			if len(ArrRandomNumbers) == 0 {
+				for randomNumber == 0 {
 					randomNumber = rand.Intn(10)
 				}
 			}
@@ -38,7 +38,7 @@ func MakeRandomNumbersByComputer(iLength int, strOption string) bool{
 		return MakeRandomNumbersByComputer(iLength-1,strOption)
 	}
 
-	if (!compareRandomNumbersAndResetNumbers(ArrRandomNumbers)){
+	if  !compareRandomNumbersAndResetNumbers(ArrRandomNumbers) {
 		return true
 	}
 
@@ -56,8 +56,8 @@ func compareRandomNumbersAndResetNumbers(arrNumbers []int) bool{
 	randomNumber := rand.Intn(10)
 	for i:=0; i <len(arrNumbers); i++ {
 		for j:=i+1; j <len(arrNumbers); j++{
-			if(arrNumbers[i] == arrNumbers[j]){
-				for(arrNumbers[i] == randomNumber || (i == 0 && randomNumber == 0)){
+			if rrNumbers[i] == arrNumbers[j] {
+				for arrNumbers[i] == randomNumber || (i == 0 && randomNumber == 0) {
 					randomNumber = rand.Intn(10)
 				}
 
@@ -67,7 +67,7 @@ func compareRandomNumbersAndResetNumbers(arrNumbers []int) bool{
 		}
 	}
 
-	if(!bCheck){
+	if !bCheck {
 		compareRandomNumbersAndResetNumbers(arrNumbers)
 	}
 	return true
@@ -81,8 +81,8 @@ func CompareUserNumbersAndRandomNumbers(strUserInputNumbers string, arrRandomNum
 
 	for idx, randomNumber := range arrRandomNumbers {
 		for jdx, strUserInputNumber := range strUserInputNumbers {
-			if (strconv.Itoa(randomNumber) == string(strUserInputNumber)){
-				if (idx == jdx){
+			if  strconv.Itoa(randomNumber) == string(strUserInputNumber) {
+				if  idx == jdx {
 					iStrik++
 				}else{
 					iBall++
@@ -91,7 +91,7 @@ func CompareUserNumbersAndRandomNumbers(strUserInputNumbers string, arrRandomNum
 
 		}
 	}
-	if(iStrik == 3){
+	if iStrik == 3 {
 		strResul = "Out"
 	}else{
 		strResul = strconv.Itoa(iStrik) + "Strikes " + strconv.Itoa(iBall) + "Balls"

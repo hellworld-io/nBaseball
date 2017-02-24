@@ -64,7 +64,7 @@ func main() {
 	//fmt.Println("*iNumberMaxLength",*iNumberMaxLength)
 
 
-	if(!util.CheckArgNumberLength(*iNumberMaxLength)){
+	if !util.CheckArgNumberLength(*iNumberMaxLength) {
 		log.Fatal("Making number length is 3 to 5.")
 		os.Exit(-1)
 	}
@@ -74,7 +74,7 @@ func main() {
 	//arrComputerNumbers
 	//numbers.ArrRandomNumbers
 
-	if (arrComputerNumbers != nil){
+	if  arrComputerNumbers != nil {
 		startSecond := time.Now()
 
 		scanner := bufio.NewScanner(os.Stdin)
@@ -87,18 +87,18 @@ func main() {
 				os.Exit(0)
 			}
 
-			if(!bClear){
+			if !bClear {
 				iTryTotalCount++
 				if _, err := strconv.Atoi(line); err != nil {
 					fmt.Printf("%q does not looks like a number.\n", line)
 				}else{
-					if (!util.CheckUserNumberLength(line, *iNumberMaxLength)){
+					if  !util.CheckUserNumberLength(line, *iNumberMaxLength) {
 						fmt.Printf("Max number length is %d\n",*iNumberMaxLength)
 					}else{
-						if(util.CheckUserInputNumber(line)){
+						if util.CheckUserInputNumber(line) {
 							strResult = numbers.CompareUserNumbersAndRandomNumbers(line, arrComputerNumbers)
 
-							if(strResult == "Out"){
+							if strResult == "Out" {
 								endSecond := time.Now()
 
 								showResults(startSecond, endSecond)

@@ -6,7 +6,7 @@ package util
 	3. Desc			: to check max length
  */
 func CheckArgNumberLength(iNumberLength int) bool{
-	if(iNumberLength < 3 || iNumberLength > 5){
+	if iNumberLength < 3 || iNumberLength > 5 {
 		return false
 	}
 	return true
@@ -36,7 +36,7 @@ func CheckUserNumberLength(strUserInputNumber string, iMaxNumberLength int) bool
 func CheckUserInputNumber(strUsrInputNumbers string) bool{
 	for idx := 0; idx < len(strUsrInputNumbers); idx++{
 		for jdx := idx+1; jdx < len(strUsrInputNumbers); jdx++{
-			if (strUsrInputNumbers[idx] == strUsrInputNumbers[jdx]){
+			if strUsrInputNumbers[idx] == strUsrInputNumbers[jdx]{
 				return false
 			}
 		}
