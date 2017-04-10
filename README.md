@@ -1,9 +1,8 @@
 # nBaseball
 
-### Number Baseball Game written in Go.
-### Right now, I am making it.
+## What is nBaseball?
 
-## What?
+### nBaseball is a Number Baseball Game which is written by Go.
 
 ### This project is that looks for correct number.
 
