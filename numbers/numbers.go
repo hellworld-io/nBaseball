@@ -56,7 +56,7 @@ func compareRandomNumbersAndResetNumbers(arrNumbers []int) bool{
 	randomNumber := rand.Intn(10)
 	for i:=0; i <len(arrNumbers); i++ {
 		for j:=i+1; j <len(arrNumbers); j++{
-			if rrNumbers[i] == arrNumbers[j] {
+			if arrNumbers[i] == arrNumbers[j] {
 				for arrNumbers[i] == randomNumber || (i == 0 && randomNumber == 0) {
 					randomNumber = rand.Intn(10)
 				}
