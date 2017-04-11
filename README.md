@@ -6,7 +6,7 @@
 
 ### This project is that looks for correct number.
 
-## How to use it?
+## How to use it? 
 
 * Here are options.
 	* maxL : max number length(3 ~ 5). Default 3.
