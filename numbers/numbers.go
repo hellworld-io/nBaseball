@@ -6,69 +6,72 @@ import (
 	"strconv"
 )
 
-var ArrRandomNumbers []int
+var randomNumbers []int
 /*
-	1. Function		: MakeRandomNumbersbyComputer
+	1. Function		: MakeRandomNumbers
 	2. Arguments
-		iLength		= length of making numbers
-		strOption
+		length		: length of making numbers
+		option
 			1. First number does not use 0 only.
 			2. All numbers do not use 0.
 			3. 0 to 9 numbers use
 	3. Desc			: to make random number
+	4. Return		: []int
  */
-func MakeRandomNumbersByComputer(iLength int, strOption string) bool{
+func MakeRandomNumbers(length int, option string) []int{
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
 
-	if iLength != 0 {
-		if strOption == "1" {
+	if length != 0 {
+		if option == "1" {
 			for randomNumber == 0 {
 				randomNumber = rand.Intn(10)
 			}
-		}else if strOption == "2" {
-			if len(ArrRandomNumbers) == 0 {
+		}else if option == "2" {
+			if len(randomNumbers) == 0 {
 				for randomNumber == 0 {
 					randomNumber = rand.Intn(10)
 				}
 			}
 		}
 
-		ArrRandomNumbers = append(ArrRandomNumbers, randomNumber)
-		return MakeRandomNumbersByComputer(iLength-1,strOption)
+		randomNumbers = append(randomNumbers, randomNumber)
+		return MakeRandomNumbers(length-1,option)
 	}
 
-	if  !compareRandomNumbersAndResetNumbers(ArrRandomNumbers) {
-		return true
+	if  !removeDupleNumbers(randomNumbers) {
+		return randomNumbers
 	}
 
-	return true
+	return randomNumbers
 }
 
 /*
-	1. Function		: compareRandomNumbersAndResetNumbers
-	2. Arguments	: arrRandomComNumber	= random number array by Computer
-	3. Desc			: to comapare all number of arrComputerNumbers and to change duplication number
+	1. Function		: removeDupleNumbers
+	2. Arguments		: the numbers is random int slice.
+	3. Desc			: to change duplication number
+	4. Return		: bool
  */
-func compareRandomNumbersAndResetNumbers(arrNumbers []int) bool{
+func removeDupleNumbers(numbers []int) bool{
 	bCheck := true
 	rand.Seed(int64(time.Now().Nanosecond()))
 	randomNumber := rand.Intn(10)
-	for i:=0; i <len(arrNumbers); i++ {
-		for j:=i+1; j <len(arrNumbers); j++{
-			if arrNumbers[i] == arrNumbers[j] {
-				for arrNumbers[i] == randomNumber || (i == 0 && randomNumber == 0) {
+
+	for i:=0; i <len(numbers); i++ {
+		for j:=i+1; j <len(numbers); j++{
+			if numbers[i] == numbers[j] {
+				for numbers[i] == randomNumber || (i == 0 && randomNumber == 0) {
 					randomNumber = rand.Intn(10)
 				}
 
-				arrNumbers[i] = randomNumber
+				numbers[i] = randomNumber
 				bCheck = false
 			}
 		}
 	}
 
 	if !bCheck {
-		compareRandomNumbersAndResetNumbers(arrNumbers)
+		removeDupleNumbers(numbers)
 	}
 	return true
 }
