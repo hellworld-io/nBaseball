@@ -1,4 +1,4 @@
-# nBaseball Project111222
+# nBaseball refactoring
 
 ## What is nBaseball?
 
