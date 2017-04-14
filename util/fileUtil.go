@@ -9,6 +9,15 @@ import (
 
 var JsonData []map[string]interface{}
 
+type Record struct {
+	No string `json:"no"`
+	Name string `json:"name"`
+	Time string `json:"time"`
+	Try string `json:"try"`
+}
+
+var RecordList []Record
+
 type UserResult struct {
 	UserResults []struct{
 		No string `json:"no"`

@@ -27,7 +27,7 @@ func showResults(tStartTime time.Time, tEndTime time.Time){
 	totalSec := int(timeDiff.Seconds())% 60
 	fmt.Printf("Your result is %dD %dH %dM %dS, and you try %d\n", days, hours, totalMin, totalSec, iTryTotalCount)
 
-	//fmt.Println("If you want to see results, press enter.")
+	//fmt.Println("If you want to see result, press enter.")
 }
 
 func setResult() (result []string){
@@ -119,14 +119,14 @@ func main() {
 	//				fmt.Fprintln(os.Stdout, val)
 	//			}
 	//
-	//			//var strFileName = string( "./data/UserResult.json")
+	//			//var strFileName = string( "./data/UserRecord.json")
 	//			//util.ReadJsonFile(strFileName)
 	//			//var uinfo = &util.UserResult{}
 	//			//fmt.Println(util.UserResult{})
 	//			//fmt.Println(uinfo)
 	//			/*
-	//			fmt.Println("Here is currently results.")
-	//			var strFileName = string( "./data/UserResult.json")
+	//			fmt.Println("Here is currently result.")
+	//			var strFileName = string( "./data/UserRecord.json")
 	//			util.ReadJsonFile(strFileName)
 	//			fmt.Println(util.JsonData[0]["Name"].(string))
 	//			util.JsonData[0]["Name"] = "aaa"
@@ -140,7 +140,7 @@ func main() {
 	//			}
 	//
 	//
-	//			jsonUpdate, err := os.Create("./data/UserResult.json")
+	//			jsonUpdate, err := os.Create("./data/UserRecord.json")
 	//
 	//			if err != nil {
 	//				log.Fatal("Making json file error!!! ")
