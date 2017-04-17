@@ -19,7 +19,7 @@ const usages string = `Usage of nBaseball:
 var (
 	startCmd   = flag.NewFlagSet("start", flag.ExitOnError)
 	maxNumberLength  = startCmd.Int("max", 0, "create 3 to 5 number of length ex) nBaseball start -max 3")
-	numberOption = startCmd.String("option", "", "Option \n 1. All number do not use 0. \n 2. First number does no use 0 only. \n 3. 0 to 9 numbers use")
+	numberOption = startCmd.String("option", "", "Option \n 1. All number do not use 0. \n 2. Only first number does not use 0. \n 3. 0 to 9 numbers use")
 )
 
 func defaultMessage() {
@@ -47,7 +47,7 @@ func checkFlags(maxLen int, option string) bool{
 	return true
 }
 
-func SetFlags() (maxArg int, optionArg string) {
+func SetFlags() (maxArg int, optionArg string, optionMsg string) {
 
 	flag.Usage = defaultMessage
 
@@ -71,7 +71,15 @@ func SetFlags() (maxArg int, optionArg string) {
 
 		maxArg = *maxNumberLength
 		optionArg = *numberOption
+
+		if optionArg == "1" {
+			optionMsg = "all number do not use"
+		} else if optionArg == "2" {
+			optionMsg = "only first number does not use 0."
+		} else {
+			optionMsg = "0 to 9 numbers use"
+		}
 	}
 
-	return maxArg, optionArg
+	return maxArg, optionArg, optionMsg
 }
