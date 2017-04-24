@@ -3,7 +3,6 @@ package numbers
 import (
 	"math/rand"
 	"time"
-	"strconv"
 )
 
 var randomNumbers []int
