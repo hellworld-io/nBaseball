@@ -75,30 +75,3 @@ func removeDupleNumbers(numbers []int) bool{
 	}
 	return true
 }
-
-
-func CompareUserNumbersAndRandomNumbers(strUserInputNumbers string, arrRandomNumbers []int) string{
-	var strResul string = ""
-	var iStrik int = 0
-	var iBall int = 0
-
-	for idx, randomNumber := range arrRandomNumbers {
-		for jdx, strUserInputNumber := range strUserInputNumbers {
-			if  strconv.Itoa(randomNumber) == string(strUserInputNumber) {
-				if  idx == jdx {
-					iStrik++
-				}else{
-					iBall++
-				}
-			}
-
-		}
-	}
-	if iStrik == 3 {
-		strResul = "Out"
-	}else{
-		strResul = strconv.Itoa(iStrik) + "Strikes " + strconv.Itoa(iBall) + "Balls"
-	}
-
-	return strResul
-}
